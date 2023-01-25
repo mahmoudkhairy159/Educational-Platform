@@ -37,7 +37,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:teacher')->except('logout');
+        $this->middleware('guest:trainer')->except('logout');
     }
     public function showAdminLoginForm()
     {
@@ -60,19 +60,19 @@ class LoginController extends Controller
 
 
 
-    public function showTeacherLoginForm()
+    public function showtrainerLoginForm()
     {
-        return view('auth.login', ['url' => 'teacher', 'title'=>'teacher']);
+        return view('auth.login', ['url' => 'trainer', 'title'=>'trainer']);
     }
-    public function teacherLogin(Request $request)
+    public function trainerLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('teacher')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect()->intended('/teacher/dashboard');
+        if (Auth::guard('trainer')->attempt($request->only(['email','password']), $request->get('remember'))){
+            return redirect()->intended('/trainer/home');
         }
 
         return back()->withInput($request->only('email', 'remember'));

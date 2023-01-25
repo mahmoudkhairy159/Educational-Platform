@@ -26,8 +26,8 @@ class RedirectIfAuthenticated
             if ($guard === "admin" && Auth::guard($guard)->check()) {
                 return redirect('/admin/dashboard');
             }
-            if ($guard === "teacher" && Auth::guard($guard)->check()) {
-                return redirect('/teacher/teacherHome');
+            if ($guard === "trainer" && Auth::guard($guard)->check()) {
+                return redirect('/trainer/trainerHome');
             }
 
             if (Auth::guard($guard)->check()) {

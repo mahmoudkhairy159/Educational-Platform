@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\TeacherProfile;
+use App\trainer;
 
-class Teacher extends Authenticatable
+class trainerProfile extends Authenticatable
 {
     use Notifiable;
 
@@ -16,9 +16,8 @@ class Teacher extends Authenticatable
      *
      * @var array
      */
-    protected $guard ='teacher';
     protected $fillable = [
-        'name', 'email', 'password','phone','address'
+        'user_id','governorate','city','gender','photo'
     ];
 
     /**
@@ -40,8 +39,8 @@ class Teacher extends Authenticatable
     ];
 
     //Relationships
-    public function teacherProfile()
+    public function trainer()
     {
-        return $this->hasOne(TeacherProfile::class);
+        return $this->belongsTo(trainer::class);
     }
 }

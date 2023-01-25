@@ -18,9 +18,11 @@ return [
 
     //user header
     'Home'=>'Home',
-    'Products'=>'Products',
-    'Orders'=>'Orders',
-    'My Profile'=>'My Profile',
+    'About'=>'About',
+    'Courses'=>'Courses',
+    'Trainers'=>'Trainers',
+    'Events'=>'Events',
+    'Pricing'=>'Pricing',
     'Logout'=>'Logout',
 
     //products page

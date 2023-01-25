@@ -10,6 +10,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 
 <!-- bootstrap JS  -->
 <script src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
@@ -52,20 +53,5 @@
     //VISA radio button is checked
 </script>
 
-
-<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-<script>
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('9a82aa12edbfc880a1af', {
-        cluster: 'mt1'
-    });
-
-    var channel = pusher.subscribe('new-notify');
-    channel.bind('App\\Events\\NewNotification', function(data) {
-        console.log(data);
-    });
-</script>
 
 

@@ -56,14 +56,14 @@ return [
             'provider' => 'admins',
             'hash' => false,
         ],
-        'teacher' => [
+        'trainer' => [
             'driver' => 'session',
-            'provider' => 'teachers',
+            'provider' => 'trainers',
         ],
 
-        'teacher-api' => [
+        'trainer-api' => [
             'driver' => 'token',
-            'provider' => 'teachers',
+            'provider' => 'trainers',
             'hash' => false,
         ],
     ],
@@ -94,9 +94,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-        'teachers' => [
+        'trainers' => [
             'driver' => 'eloquent',
-            'model' => App\Teacher::class,
+            'model' => App\trainer::class,
         ],
 
         // 'users' => [
@@ -133,8 +133,8 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'teachers' => [
-            'provider' => 'teachers',
+        'trainers' => [
+            'provider' => 'trainers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

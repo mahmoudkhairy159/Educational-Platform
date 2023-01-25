@@ -17,9 +17,11 @@ return [
 
     //header
     'Home'=>'الصفحة الرئيسية',
-    'Products'=>'المنتجات',
-    'Orders'=>'الطلبات',
-    'My Profile'=>'الصفحة الشخصية',
+    'About'=>'من نحن',
+    'Courses'=>'الدورات',
+    'Trainers'=>'المعلمين',
+    'Events'=>'الأحداث',
+    'Pricing'=>'الأسعار',
     'Logout'=>'تسجيل الخروج',
 
     //products page

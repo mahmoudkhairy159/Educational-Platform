@@ -46,7 +46,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
         $this->mapAdminRoutes();
-        $this->mapTeacherRoutes();
+        $this->maptrainerRoutes();
         //
     }
 
@@ -71,11 +71,11 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/admin.php'));
     }
 
-    protected function mapTeacherRoutes()
+    protected function maptrainerRoutes()
     {
-        Route::middleware('teacher')
+        Route::middleware('trainer')
             ->namespace($this->namespace)
-            ->group(base_path('routes/teacher.php'));
+            ->group(base_path('routes/trainer.php'));
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Teacher;
+use App\trainer;
 use App\Admin;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -44,7 +44,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         $this->middleware('guest:admin');
-        $this->middleware('guest:teacher');
+        $this->middleware('guest:trainer');
     }
 
     /**
@@ -98,21 +98,21 @@ class RegisterController extends Controller
         ]);
         return redirect()->intended('login/admin');
     }
-    public function showTeacherRegisterForm()
+    public function showtrainerRegisterForm()
     {
-        return view('auth.register', ['url' => 'teacher', 'title'=>'teacher']);
+        return view('auth.register', ['url' => 'trainer', 'title'=>'trainer']);
     }
 
 
-    protected function createTeacher(Request $request)
+    protected function createtrainer(Request $request)
     {
-        $admin = Teacher::create([
+        $admin = trainer::create([
             'name' =>$request['name'],
             'address' => $request['address'],
             'email' => $request['email'],
             'phone' => $request['phone'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect()->intended('login/teacher');
+        return redirect()->intended('login/trainer');
     }
 }

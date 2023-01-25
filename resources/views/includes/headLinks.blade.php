@@ -24,7 +24,8 @@
   <link href="{{asset('vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('vendor/simple-datatables/style.css')}}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
+
+ <!-- Template Main CSS File -->
  <link href="{{  asset('css/app.css')}}" rel="stylesheet">
 
 
@@ -35,6 +36,7 @@
  <!-- bootstrap css-->
  <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
  <link href="{{  asset('css/style.css')}}" rel="stylesheet">
+ <link href="{{  asset('css/style1.css')}}" rel="stylesheet">
 
 
 
