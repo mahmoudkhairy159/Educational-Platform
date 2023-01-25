@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\trainerProfile;
+use App\TrainerProfile;
+use App\Course;
 
 class trainer extends Authenticatable
 {
@@ -42,6 +43,22 @@ class trainer extends Authenticatable
     //Relationships
     public function trainerProfile()
     {
-        return $this->hasOne(trainerProfile::class);
+        return $this->hasOne(TrainerProfile::class);
+    }
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    public function lessons()
+    {
+        return $this->hasManyThrough(
+            'App\Lesson',
+            'App\Course',
+            'trainer_id', // Foreign key on courses table...
+            'course_id', // Foreign key on lessons table...
+            'id', // Local key on countries table...
+            'id' // Local key on users table...
+        );
     }
 }

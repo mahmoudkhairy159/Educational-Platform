@@ -2,10 +2,14 @@
 
 namespace App;
 
+
+
+use App\Course;
+use App\UserProfile;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\UserProfile;
+
 
 /*Student*/
 class User extends Authenticatable
@@ -45,4 +49,16 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserProfile::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+
+
+
+
+    //inverse Relationships
+
 }

@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\trainer;
+use App\Trainer;
 
-class trainerProfile extends Authenticatable
+class TrainerProfile extends Authenticatable
 {
     use Notifiable;
 
@@ -17,7 +17,7 @@ class trainerProfile extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_id','governorate','city','gender','photo'
+        'nationalId','description_ar','description_en','gender','governorate','city','photo','trainer_id'
     ];
 
     /**
@@ -41,6 +41,6 @@ class trainerProfile extends Authenticatable
     //Relationships
     public function trainer()
     {
-        return $this->belongsTo(trainer::class);
+        return $this->belongsTo(Trainer::class);
     }
 }
