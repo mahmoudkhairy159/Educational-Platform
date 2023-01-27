@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\trainer;
 use App\Admin;
+use App\TrainerProfile;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -98,21 +99,25 @@ class RegisterController extends Controller
         ]);
         return redirect()->intended('login/admin');
     }
-    public function showtrainerRegisterForm()
+    public function showTrainerRegisterForm()
     {
         return view('auth.register', ['url' => 'trainer', 'title'=>'trainer']);
     }
 
 
-    protected function createtrainer(Request $request)
+    protected function createTrainer(Request $request)
     {
-        $admin = trainer::create([
+         $trainer=Trainer::create([
             'name' =>$request['name'],
             'address' => $request['address'],
             'email' => $request['email'],
             'phone' => $request['phone'],
             'password' => Hash::make($request['password']),
         ]);
+         TrainerProfile::create([
+             'trainer_id'=>$trainer->id
+         ]);
+
         return redirect()->intended('login/trainer');
     }
 }

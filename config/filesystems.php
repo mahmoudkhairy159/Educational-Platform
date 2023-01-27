@@ -54,6 +54,26 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'courses' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/courses'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'lessons' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/lessons'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'trainers' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/trainers'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+
 
         's3' => [
             'driver' => 's3',

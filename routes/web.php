@@ -23,6 +23,13 @@ Route::group([
     Route::get('/home', 'HomeController@index')->name('home')->middleware('auth:web');
 
     Route::middleware(['auth:web'])->prefix('user')->group(function () {
+        Route::resource('courses', 'CourseController')->only([
+            'index', 'show'
+        ]);
+        Route::resource('lessons', 'LessonController')->only([
+            'index', 'show'
+        ]);
+
 
     });
 });

@@ -16,14 +16,17 @@ class CreateTrainersProfilesTable extends Migration
         // 'user_id','governorate','city','gender','nationalId','educationType','educationYear','photo'
         Schema::create('trainersProfiles', function (Blueprint $table) {
             $table->id();
-            $table->string('nationalId')->unique();
-            $table->string('description_ar');
-            $table->string('description_en');
-            $table->string('gender');
-            $table->string('governorate');
-            $table->string('city');
-            $table->string('photo');
+            $table->string('nationalId')->unique()->nullable();
+            $table->string('description_ar')->nullable();
+            $table->string('description_en')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('governorate')->nullable();
+            $table->string('city')->nullable();
+            $table->string('job')->nullable();
+            $table->string('photo')->nullable();
             $table->integer('trainer_id');
+            $table->timestamps();
+
         });
     }
 

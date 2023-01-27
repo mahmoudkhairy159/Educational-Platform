@@ -25,17 +25,17 @@ return [
     'Pricing'=>'Pricing',
     'Logout'=>'Logout',
 
-    //products page
-    'Featured Product'=>'Featured Product',
-    'Popular Products'=>'Popular Products',
-    //product page
+    //Courses page
+    'Featured Course'=>'Featured Course',
+    'Popular Courses'=>'Popular Courses',
+    //Course page
     'Overview'=>'Overview',
     'Customers Opinions'=>'Customers Opinions',
     'Description'=>'Description',
     'Add to cart'=>'Add to cart',
-    'Related Products'=>'Related Products',
+    'Related Courses'=>'Related Courses',
     //orders page
-    'Product'=>'Product',
+    'Course'=>'Course',
     'Price'=>'Price',
     'Quantity'=>'Quantity',
     'Subtotal'=>'Subtotal',
@@ -54,7 +54,7 @@ return [
     'Search'=>'Search',
     'ID'=>'ID',
     'Category'=>'Category',
-    //admin allProductsTable
+    //admin allCoursesTable
     'Picture'=>'Picture',
     'Actions'=>'Actions',
     //admin sidebar
@@ -62,10 +62,10 @@ return [
     'Tables'=>'Tables',
     'Customers'=>'Customers',
     'Profile'=>'profile',
-    //create product
-    'New Product'=>'New Product',
-    'Add New Product'=>'Add New Product',
-    'The product will be added by: '=>'The product will be added by',
+    //create Course
+    'New Course'=>'New Course',
+    'Add New Course'=>'Add New Course',
+    'The Course will be added by: '=>'The Course will be added by',
     'Arabic Name'=>'Arabic Name',
     'English Name'=>'English Name',
     'English Description'=>'English Description',
@@ -74,18 +74,18 @@ return [
     'SubPicture #1'=>'SubPicture #1',
     'SubPicture #2'=>'SubPicture #2',
     'SubPicture #3'=>'SubPicture #3',
-    'Add Product'=>'Add Product',
-    'Enter Product Price'=>'Enter Product Price',
+    'Add Course'=>'Add Course',
+    'Enter Course Price'=>'Enter Course Price',
     'Enter Arabic Name'=>'Enter Arabic Name',
     'Enter English Name'=>'Enter English Name',
-    'Here can be your product description in English'=>'Here can be your product description in English',
-    'Here can be your product description in Arabic'=>'Here can be your product description in Arabic',
-    //edit product
-    'Edit Product'=>'Edit Product',
-    'The product will be edited by'=>'The product will be edited by',
-    'View Product'=>'View Product',
-    'Product Data'=>'Product Data',
-    'Delete Product'=>'Delete Product',
+    'Here can be your Course description in English'=>'Here can be your Course description in English',
+    'Here can be your Course description in Arabic'=>'Here can be your Course description in Arabic',
+    //edit Course
+    'Edit Course'=>'Edit Course',
+    'The Course will be edited by'=>'The Course will be edited by',
+    'View Course'=>'View Course',
+    'Course Data'=>'Course Data',
+    'Delete Course'=>'Delete Course',
     //profile
     'Edit Profile'=>'Edit Profile',
     'Change Password'=>'Change Password',
@@ -105,11 +105,11 @@ return [
     'VISA'=>'VISA',
     'Sale Price'=>'Sale Price',
     'Total After Sale'=>'Total After Sale',
-    'All Products'=>'All Products',
+    'All Courses'=>'All Courses',
     'Newest'=>'Newest',
-    'Newest Products'=>'Newest Products',
-    'Lowest Price Products'=>'Lowest Price Products',
-    'Highest Products'=>'Highest Products',
+    'Newest Courses'=>'Newest Courses',
+    'Lowest Price Courses'=>'Lowest Price Courses',
+    'Highest Courses'=>'Highest Courses',
     'Lowest Price'=>'Lowest Price',
     'Highest Price'=>'Highest Price',
     'Men'=>'Men',

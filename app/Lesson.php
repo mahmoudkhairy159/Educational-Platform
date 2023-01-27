@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     protected $fillable = [
-        'name_ar', 'name_en', 'material', 'course_id'
+        'name_ar', 'name_en','video' ,'material' , 'course_id', 'assignment','assignmentCorrectAnswer',   'exam','examCorrectAnswer','examTotalMark'
     ];
 
     //Relationship
-    public function assignment()
+    public function assignments()
     {
-        return $this->hasOne(Assignment::class);
+        return $this->hasMany(Assignment::class);
     }
 
-    public function exam()
+    public function exams()
     {
-        return $this->hasOne(Exam::class);
+        return $this->hasMany(Exam::class);
     }
 
     //InverseRelationship

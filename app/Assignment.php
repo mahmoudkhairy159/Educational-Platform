@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Assignment extends Model
 {
     protected $fillable=[
-        'assignment','answer','correctAnswer','lesson_id'
+              'answer','lesson_id','user_id'
         ];
     //Relationships
 
@@ -15,5 +15,9 @@ class Assignment extends Model
     public function lesson()
     {
         return $this->belongsTo(Lesson::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

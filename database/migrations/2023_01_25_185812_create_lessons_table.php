@@ -17,7 +17,13 @@ class CreateLessonsTable extends Migration
             $table->id();
             $table->string('name_ar');
             $table->string('name_en');
+            $table->string('video');
             $table->string('material');
+            $table->string('assignment')->nullable();
+            $table->string('assignmentCorrectAnswer')->nullable();
+            $table->string('exam')->nullable();
+            $table->string('examCorrectAnswer')->nullable();
+            $table->string('examTotalMark')->nullable();
             $table->integer('course_id');
             $table->timestamps();
         });

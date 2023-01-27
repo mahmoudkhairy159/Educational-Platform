@@ -24,17 +24,17 @@ return [
     'Pricing'=>'الأسعار',
     'Logout'=>'تسجيل الخروج',
 
-    //products page
-    'Featured Product'=>'المنتجات المتميزة',
-    'Popular Products'=>'والمنتجات الأكثر شعبية',
-    //product page
+    //Courses page
+    'Featured Course'=>'المنتجات المتميزة',
+    'Popular Courses'=>'والمنتجات الأكثر شعبية',
+    //Course page
     'Overview'=>'التفاصيل',
     'Customers Opinions'=>'أراء الزبائن',
     'Description'=>'الوصف',
     'Add to cart'=>'أضف الي السلَة',
-    'Related Products'=>'المنتجات ذات علاقة',
+    'Related Courses'=>'المنتجات ذات علاقة',
     //orders page
-    'Product'=>'المنتج',
+    'Course'=>'المنتج',
     'Price'=>'السعر',
     'Quantity'=>'العدد',
     'Subtotal'=>'السعر الكلي',
@@ -52,7 +52,7 @@ return [
     'Search'=>'اكتب ما تبحث عنه',
     'ID'=>'ID',
     'Category'=>'الفئة',
-    //admin allProductsTable
+    //admin allCoursesTable
     'Picture'=>'الصورة ',
     'Actions'=>'الإجراءات',
     //admin sidebar
@@ -61,10 +61,10 @@ return [
     'Tables'=>'الجداول',
     'Customers'=>'الزبائن',
     'Profile'=>'الصفحة الشخصية',
-//create product
-    'New Product'=>'منتج جديد',
-    'Add New Product'=>'اضف منتج جديد',
-    'The product will be added by: '=>'سيتم اضافة المنتج بواسطة ',
+//create Course
+    'New Course'=>'منتج جديد',
+    'Add New Course'=>'اضف منتج جديد',
+    'The Course will be added by: '=>'سيتم اضافة المنتج بواسطة ',
     'Arabic Name'=>'الاسم بالعربية',
     'English Name'=>'الاسم بالانجليزية',
     'English Description'=>'الوصف بالانجليزية',
@@ -73,18 +73,18 @@ return [
     'SubPicture #1'=>'الصورة الفرعية رقم 1',
     'SubPicture #2'=>'الصورة الفرعية رقم 2',
     'SubPicture #3'=>'الصورة الفرعية رقم 3',
-    'Add Product'=>'اضف منتج',
-    'Enter Product Price'=>'ادخل سعر المنتج',
+    'Add Course'=>'اضف منتج',
+    'Enter Course Price'=>'ادخل سعر المنتج',
     'Enter Arabic Name'=>'ادخل الاسم بالعربية',
     'Enter English Name'=>'ادخل الاسم بالانجليزية',
-    'Here can be your product description in English'=>'يمكنك كتابة وصف المنتج بالانجليزية هنا!',
-    'Here can be your product description in Arabic'=>'يمكنك كتابة وصف المنتج بالعربية هنا!',
-    //edit product
-    'Edit Product'=>'عدِل منتج',
-    'The product will be edited by'=>'سيتم تعديل المنتج بواسطة ',
-    'View Product'=>'اعرض المنتج',
-    'Product Data'=>'بيانات المنتج',
-    'Delete Product'=>'احذف المنتج',
+    'Here can be your Course description in English'=>'يمكنك كتابة وصف المنتج بالانجليزية هنا!',
+    'Here can be your Course description in Arabic'=>'يمكنك كتابة وصف المنتج بالعربية هنا!',
+    //edit Course
+    'Edit Course'=>'عدِل منتج',
+    'The Course will be edited by'=>'سيتم تعديل المنتج بواسطة ',
+    'View Course'=>'اعرض المنتج',
+    'Course Data'=>'بيانات المنتج',
+    'Delete Course'=>'احذف المنتج',
     //profile
     'Edit Profile'=>'عدَل البيانات الشخصية',
     'Change Password'=>'غيَر الرقم السري',
@@ -104,13 +104,13 @@ return [
     'VISA'=>'بالفيزا',
     'Sale Price'=>'السعر بعد الخصم',
     'Total After Sale'=>'السعر الكلي بعد الخضم',
-    'All Products'=>'كل المنتجات',
+    'All Courses'=>'كل المنتجات',
     'Newest'=>'الأحدث',
     'Lowest Price'=>'الأقل سعراً',
     'Highest Price'=>'الأعلي سعراً',
-    'Newest Products'=>'أحدث المنتجات',
-    'Lowest Price Products'=>'المنتجات الأقل سعرا',
-    'Highest Products'=>'المنتجات الاعلي سعرا',
+    'Newest Courses'=>'أحدث المنتجات',
+    'Lowest Price Courses'=>'المنتجات الأقل سعرا',
+    'Highest Courses'=>'المنتجات الاعلي سعرا',
     'Men'=>'الرجال',
     'Women'=>'النساء',
     'Kids'=>'الاطفال',

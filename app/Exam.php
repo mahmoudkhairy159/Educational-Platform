@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
-    protected $fillable=[
-        'exam','answer','correctAnswer','mark','totalMark','lesson_id',
+    protected $fillable = [
+        'answer', 'mark', 'lesson_id', 'user_id'
     ];
     //relationships
 
@@ -15,5 +15,9 @@ class Exam extends Model
     public function lesson()
     {
         return $this->belongsTo(Lesson::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

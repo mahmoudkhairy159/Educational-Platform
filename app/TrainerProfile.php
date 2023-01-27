@@ -10,14 +10,14 @@ use App\Trainer;
 class TrainerProfile extends Authenticatable
 {
     use Notifiable;
-
+    protected $table='trainersProfiles';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nationalId','description_ar','description_en','gender','governorate','city','photo','trainer_id'
+        'job','nationalId','description_ar','description_en','gender','governorate','city','photo','trainer_id'
     ];
 
     /**
@@ -41,6 +41,6 @@ class TrainerProfile extends Authenticatable
     //Relationships
     public function trainer()
     {
-        return $this->belongsTo(Trainer::class);
+        return $this->belongsTo(App\Trainer::class);
     }
 }
