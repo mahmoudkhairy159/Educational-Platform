@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::group([
         Route::get('/lessons/', 'LessonController@indexTrainer')->name('lessons.indexTrainer');
         Route::get('/lessons/{lesson}/', 'LessonController@showTrainer')->name('lessons.showTrainer');
         Route::resource('trainers','TrainerController')->only([
-            'index','show','update',
+           'show','update',
         ]);
 
         Route::put('/changePassword/{id}', 'TrainerController@changePassword')->name('trainers.changePassword');

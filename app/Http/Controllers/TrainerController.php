@@ -3,26 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Course;
 use App\trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+define('paginationCount',5);
 
 
 class TrainerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $trainers=Trainer::select('id','name')->paginate(paginationCount);
+        return view('student.trainer.showTrainers')->with('trainers',$trainers);
+    }
+
+    //show trainer profile for user(student)  guard
+    public function showTrainerProfileToUser($id)
+    {
+        $trainer = Trainer::find($id);
+        $trainerProfile=$trainer->trainerProfile;
+        if (!$trainer) {
+            return redirect()->back()->with('error', 'Trainer Does not Exist');
+
+        }
+        return view('student.trainer.profile')->with(['trainer'=> $trainer,'trainerProfile'=>$trainerProfile]);
     }
 
 
+    //show trainer profile for trainer guard
     public function show($id)
     {
         $trainer = Trainer::find($id);

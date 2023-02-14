@@ -17,9 +17,12 @@
             <li class="nav-item ">
                 <a class="link-dark px-4" href="/home ">{{__('messages.About')}}</a>
             </li> <li class="nav-item ">
-                <a class="link-dark px-4" href="/home ">{{__('messages.Courses')}}</a>
+                <a class="link-dark px-4" href="{{route('courses.index')}}">{{__('messages.Courses')}}</a>
             </li> <li class="nav-item ">
-                <a class="link-dark px-4" href="/home ">{{__('messages.Trainers')}}</a>
+            </li> <li class="nav-item ">
+                <a class="link-dark px-4" href="{{route('courses.indexStudentCourses')}}">{{__('messages.My Courses')}}</a>
+            </li> <li class="nav-item ">
+                <a class="link-dark px-4" href="{{route('trainers.index')}}" >{{__('messages.Trainers')}}</a>
             </li> <li class="nav-item ">
                 <a class="link-dark px-4" href="/home ">{{__('messages.Events')}}</a>
             </li> <li class="nav-item ">
@@ -72,7 +75,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="{{--route('users.show',Auth::id())--}}">
+                            <a class="dropdown-item d-flex align-items-center" href="{{route('users.show',Auth::id())}}">
                                 <i class="bi bi-person"></i>
                                 <span>{{__('messages.My Profile')}}</span>
                             </a>

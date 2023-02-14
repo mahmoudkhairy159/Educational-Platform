@@ -10,6 +10,7 @@ use App\User;
 class UserProfile extends Authenticatable
 {
     use Notifiable;
+    protected $table='usersProfiles';
 
     /**
      * The attributes that are mass assignable.

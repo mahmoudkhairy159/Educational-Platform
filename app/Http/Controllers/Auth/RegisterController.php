@@ -8,6 +8,7 @@ use App\trainer;
 use App\Admin;
 use App\TrainerProfile;
 use App\User;
+use App\UserProfile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -73,13 +74,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'address' => $data['address'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+        UserProfile::create([
+            'user_id'=>$user->id
+        ]);
+        return $user;
+
     }
 
     public function showAdminRegisterForm()

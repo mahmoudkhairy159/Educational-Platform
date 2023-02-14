@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="C:\xampp\htdocs\Educational-Platform\Educational-Platform.clpprj">
+ <settings>
+  <PM_URL><![CDATA[http://localhost/C:/xampp/htdocs/Educational-Platform]]></PM_URL>
+  <PM_HOME_URL><![CDATA[http://localhost/C:/xampp/htdocs/Educational-Platform]]></PM_HOME_URL>
+  <PM_LIBS><![CDATA[]]></PM_LIBS>
+  <PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION>
+  <PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR>
+  <PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE>
+  <PM_LANGUAGE><![CDATA[]]></PM_LANGUAGE>
+ </settings>
+ <removed value=";"/>
+ <added value=""/>
+ <lastopfiles>
+  <file name="C:\xampp\htdocs\Educational-Platform\app\Http\Controllers\CourseController.php"/>
+  <file name="C:\xampp\htdocs\Educational-Platform\app\Http\Controllers\HomeController.php"/>
+  <lastactivefile name=""/>
+ </lastopfiles>
+ <errors version="1.12.0"/>
+ <cakedata/>
+ <dplmenupath/>
+ <laravael>
+  <facade class="App" name="app"/>
+  <facade class="Auth" name="auth"/>
+  <facade class="Blade" name="blade.compiler"/>
+  <facade class="Cache" name="cache"/>
+  <facade class="Config" name="config"/>
+  <facade class="Cookie" name="cookie"/>
+  <facade class="Crypt" name="encrypter"/>
+  <facade class="DB" name="db"/>
+  <facade class="Date" name="date"/>
+  <facade class="Event" name="events"/>
+  <facade class="Facade" name="Facade does not implement getFacadeAccessor method."/>
+  <facade class="File" name="files"/>
+  <facade class="Hash" name="hash"/>
+  <facade class="Lang" name="translator"/>
+  <facade class="LaravelLocalization" name="laravellocalization"/>
+  <facade class="Log" name="log"/>
+  <facade class="Mail" name="mail.manager"/>
+  <facade class="Password" name="auth.password"/>
+  <facade class="Queue" name="queue"/>
+  <facade class="Redirect" name="redirect"/>
+  <facade class="Redis" name="redis"/>
+  <facade class="Request" name="request"/>
+  <facade class="Route" name="router"/>
+  <facade class="Schema" name="db"/>
+  <facade class="Session" name="session"/>
+  <facade class="Storage" name="filesystem"/>
+  <facade class="URL" name="url"/>
+  <facade class="Validator" name="validator"/>
+  <facade class="View" name="view"/>
+  <file name="C:\xampp\htdocs\Educational-Platform\vendor\laravel\framework\src\Illuminate\Cache\CacheServiceProvider.php">
+   <type name="memcached.connector" class="MemcachedConnector"/>
+  </file>
+  <file name="C:\xampp\htdocs\Educational-Platform\vendor\laravel\framework\src\Illuminate\Database\MigrationServiceProvider.php">
+   <type name="command.migrate.fresh" class="FreshCommand"/>
+   <type name="command.migrate.refresh" class="RefreshCommand"/>
+  </file>
+  <file name="C:\xampp\htdocs\Educational-Platform\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php">
+   <type name="files" class="Filesystem"/>
+  </file>
+  <file name="C:\xampp\htdocs\Educational-Platform\vendor\laravel\framework\src\Illuminate\Foundation\Providers\ArtisanServiceProvider.php">
+   <type name="command.auth.resets.clear" class="ClearResetsCommand"/>
+   <type name="command.clear-compiled" class="ClearCompiledCommand"/>
+   <type name="command.db.wipe" class="WipeCommand"/>
+   <type name="command.down" class="DownCommand"/>
+   <type name="command.environment" class="EnvironmentCommand"/>
+   <type name="command.event.cache" class="EventCacheCommand"/>
+   <type name="command.event.generate" class="EventGenerateCommand"/>
+   <type name="command.key.generate" class="KeyGenerateCommand"/>
+   <type name="command.optimize" class="OptimizeCommand"/>
+   <type name="command.optimize.clear" class="OptimizeClearCommand"/>
+   <type name="command.package.discover" class="PackageDiscoverCommand"/>
+   <type name="command.queue.failed" class="ListFailedQueueCommand"/>
+   <type name="command.queue.flush" class="FlushFailedQueueCommand"/>
+   <type name="command.queue.forget" class="ForgetFailedQueueCommand"/>
+   <type name="command.queue.retry" class="QueueRetryCommand"/>
+   <type name="command.serve" class="ServeCommand"/>
+   <type name="command.storage.link" class="StorageLinkCommand"/>
+   <type name="command.stub.publish" class="StubPublishCommand"/>
+   <type name="command.up" class="UpCommand"/>
+   <type name="command.view.cache" class="ViewCacheCommand"/>
+  </file>
+  <file name="C:\xampp\htdocs\Educational-Platform\vendor\laravel\framework\src\Illuminate\View\ViewServiceProvider.php">
+   <type name="view.engine.resolver" class="EngineResolver"/>
+  </file>
+  <file name="C:\xampp\htdocs\Educational-Platform\vendor\laravel\tinker\src\TinkerServiceProvider.php">
+   <type name="command.tinker" class="TinkerCommand"/>
+  </file>
+ </laravael>
+ <smartyassings/>
+ <twigtemplate/>
+ <yiidata/>
+ <todoblock>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\public\js\app.js">
+   <todo name="todo (fat): these should probably be refactored out of modal.js" pos="5;4347"/>
+   <todo name="TODO (fat): remove sketch reliance on jQuery position/offset" pos="13;5613"/>
+   <todo name="TODO: identify versions" pos="8;7067"/>
+   <todo name="TODO: identify versions" pos="7;7081"/>
+   <todo name="TODO: Drop _data, _removeData)" pos="48;10671"/>
+   <todo name="TODO: Now that all calls to _data and _removeData have been replaced" pos="2;10739"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\public\vendor\bootstrap\js\bootstrap.bundle.js">
+   <todo name="todo: tooltip passes `false` instead of selector, so we need to check" pos="54;407"/>
+   <todo name="TODO: this is now unused; remove later along with prev()" pos="5;1074"/>
+   <todo name="TODO:v6 remove boolean support" pos="5;1290"/>
+   <todo name="TODO use `document.visibilityState`" pos="13;1337"/>
+   <todo name="todo: change tests that use empty divs to avoid this check" pos="9;1542"/>
+   <todo name="todo: v6 revert #37011 &amp; change markup https://getbootstrap.com/docs/5.2/forms/input-group/" pos="7;3888"/>
+   <todo name="todo:v6 remove" pos="71;4108"/>
+   <todo name="todo: v6 revert #37011 &amp; change markup https://getbootstrap.com/docs/5.2/forms/input-group/" pos="31;4206"/>
+   <todo name="todo v6 remove this OR make it optional" pos="9;5716"/>
+   <todo name="todo: remove this check on v6" pos="63;5833"/>
+   <todo name="todo: on v6 the following can be achieved with CSS only" pos="67;5840"/>
+   <todo name="TODO: v6 @deprecated, keep it for backwards compatibility reasons" pos="5;6264"/>
+   <todo name="TODO v6 @deprecated, keep it for backwards compatibility reasons" pos="5;6272"/>
+   <todo name="TODO: on v6 target should be given explicitly &amp; remove the {target: 'ss-target'} case" pos="7;6336"/>
+   <todo name="TODO: v6 Only for backwards compatibility reasons. Use rootMargin only" pos="67;6337"/>
+   <todo name="todo:v6: could be only `tab`" pos="108;6559"/>
+   <todo name="todo: should Throw exception on v6" pos="17;6573"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\public\vendor\bootstrap\js\bootstrap.esm.js">
+   <todo name="todo: tooltip passes `false` instead of selector, so we need to check" pos="52;403"/>
+   <todo name="TODO: this is now unused; remove later along with prev()" pos="3;1070"/>
+   <todo name="TODO:v6 remove boolean support" pos="3;1286"/>
+   <todo name="TODO use `document.visibilityState`" pos="11;1333"/>
+   <todo name="todo: change tests that use empty divs to avoid this check" pos="7;1538"/>
+   <todo name="todo: v6 revert #37011 &amp; change markup https://getbootstrap.com/docs/5.2/forms/input-group/" pos="5;2038"/>
+   <todo name="todo:v6 remove" pos="69;2258"/>
+   <todo name="todo: v6 revert #37011 &amp; change markup https://getbootstrap.com/docs/5.2/forms/input-group/" pos="29;2356"/>
+   <todo name="todo v6 remove this OR make it optional" pos="7;3866"/>
+   <todo name="todo: remove this check on v6" pos="61;3983"/>
+   <todo name="todo: on v6 the following can be achieved with CSS only" pos="65;3990"/>
+   <todo name="TODO: v6 @deprecated, keep it for backwards compatibility reasons" pos="3;4414"/>
+   <todo name="TODO v6 @deprecated, keep it for backwards compatibility reasons" pos="3;4422"/>
+   <todo name="TODO: on v6 target should be given explicitly &amp; remove the {target: 'ss-target'} case" pos="5;4486"/>
+   <todo name="TODO: v6 Only for backwards compatibility reasons. Use rootMargin only" pos="65;4487"/>
+   <todo name="todo:v6: could be only `tab`" pos="106;4709"/>
+   <todo name="todo: should Throw exception on v6" pos="15;4723"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\public\vendor\bootstrap\js\bootstrap.js">
+   <todo name="todo: tooltip passes `false` instead of selector, so we need to check" pos="54;427"/>
+   <todo name="TODO: this is now unused; remove later along with prev()" pos="5;1094"/>
+   <todo name="TODO:v6 remove boolean support" pos="5;1310"/>
+   <todo name="TODO use `document.visibilityState`" pos="13;1357"/>
+   <todo name="todo: change tests that use empty divs to avoid this check" pos="9;1562"/>
+   <todo name="todo: v6 revert #37011 &amp; change markup https://getbootstrap.com/docs/5.2/forms/input-group/" pos="7;2062"/>
+   <todo name="todo:v6 remove" pos="71;2282"/>
+   <todo name="todo: v6 revert #37011 &amp; change markup https://getbootstrap.com/docs/5.2/forms/input-group/" pos="31;2380"/>
+   <todo name="todo v6 remove this OR make it optional" pos="9;3890"/>
+   <todo name="todo: remove this check on v6" pos="63;4007"/>
+   <todo name="todo: on v6 the following can be achieved with CSS only" pos="67;4014"/>
+   <todo name="TODO: v6 @deprecated, keep it for backwards compatibility reasons" pos="5;4438"/>
+   <todo name="TODO v6 @deprecated, keep it for backwards compatibility reasons" pos="5;4446"/>
+   <todo name="TODO: on v6 target should be given explicitly &amp; remove the {target: 'ss-target'} case" pos="7;4510"/>
+   <todo name="TODO: v6 Only for backwards compatibility reasons. Use rootMargin only" pos="67;4511"/>
+   <todo name="todo:v6: could be only `tab`" pos="108;4733"/>
+   <todo name="todo: should Throw exception on v6" pos="17;4747"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\public\vendor\echarts\extension\bmap.js">
+   <todo name="TODO mercator projection is toooooooo slow" pos="51;54"/>
+   <todo name="TODO Dispose" pos="30;162"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\public\vendor\quill\quill.core.js">
+   <todo name="TODO clean up once we use WeakMap" pos="9;5521"/>
+   <todo name="TODO use yield when we can" pos="9;6376"/>
+   <todo name="TODO use WeakMap" pos="9;6510"/>
+   <todo name="TODO use WeakMap" pos="9;6578"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\public\vendor\quill\quill.js">
+   <todo name="TODO clean up once we use WeakMap" pos="9;5843"/>
+   <todo name="TODO use yield when we can" pos="9;7096"/>
+   <todo name="TODO use WeakMap" pos="9;7230"/>
+   <todo name="TODO use WeakMap" pos="9;7298"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\facade\ignition\src\Support\ComposerClassMap.php">
+   <todo name="TODO: This is incorrect. Doesnt list all fqcns. Need to parse namespace" pos="9;50"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\filp\whoops\src\Whoops\Exception\Frame.php">
+   <todo name="todo: This can be made more reliable by checking if we've entered" pos="10;54"/>
+   <todo name="@todo: This can be made more reliable by checking if we've entered" pos="9;54"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\filp\whoops\src\Whoops\Handler\PrettyPageHandler.php">
+   <todo name="todo: Make this more robust" pos="14;186"/>
+   <todo name="@todo: Make this more robust" pos="13;186"/>
+   <todo name="todo: Asset compiler" pos="14;225"/>
+   <todo name="@todo: Asset compiler" pos="13;225"/>
+   <todo name="todo: Consolidate addDataTable and addDataTableCallback" pos="10;282"/>
+   <todo name="@todo: Consolidate addDataTable and addDataTableCallback" pos="9;282"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\filp\whoops\src\Whoops\Run.php">
+   <todo name="todo Might be able to clean this up a bit better" pos="14;392"/>
+   <todo name="@todo Might be able to clean this up a bit better" pos="13;392"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\fzaninotto\faker\src\Faker\ORM\CakePHP\EntityPopulator.php">
+   <todo name="TODO check if TreeBehavior attached to modify lft/rgt cols" pos="9;117"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\fzaninotto\faker\src\Faker\Provider\Base.php">
+   <todo name="TODO: remove in v2" pos="9;547"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\fzaninotto\faker\src\Faker\Provider\de_AT\Address.php">
+   <todo name="todo implement more strict p" pos="76;15"/>
+   <todo name="@todo implement more strict p" pos="75;15"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\fzaninotto\faker\src\Faker\Provider\kk_KZ\Address.php">
+   <todo name="TODO list all country names in the world" pos="5;15"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\guzzlehttp\guzzle\src\Client.php">
+   <todo name="todo: Do not rely on curl" pos="22;430"/>
+   <todo name="@todo: Do not rely on curl" pos="21;430"/>
+   <todo name="TODO: Add more sink validation" pos="13;455"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\guzzlehttp\psr7\src\BufferStream.php">
+   <todo name="TODO: What should happen here" pos="9;125"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\hamcrest\hamcrest-php\hamcrest\Hamcrest\Arrays\IsArray.php">
+   <todo name="TODO: Allow this to take matchers or values within the array" pos="1;10"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\league\commonmark\src\Extension\Attributes\Node\AttributesInline.php">
+   <todo name="TODO: Re-implement as a delimiter" pos="42;34"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\mockery\mockery\docs\conf.py">
+   <todo name="todoc) are in another directory," pos="47;17"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nesbot\carbon\src\Carbon\Carbon.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;24"/>
+   <todo name="todoc>" pos="6;507"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nesbot\carbon\src\Carbon\CarbonImmutable.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;24"/>
+   <todo name="todoc>" pos="6;507"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nesbot\carbon\src\Carbon\CarbonInterface.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;36"/>
+   <todo name="todoc>" pos="6;517"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nesbot\carbon\src\Carbon\Factory.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;20"/>
+   <todo name="todoc>" pos="6;239"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nesbot\carbon\src\Carbon\FactoryImmutable.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;18"/>
+   <todo name="todoc>" pos="6;237"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nesbot\carbon\src\Carbon\Lang\ar_Shakl.php">
+   <todo name="TODO add shakl to months" pos="6;19"/>
+   <todo name="@TODO add shakl to months" pos="5;19"/>
+   <todo name="TODO add shakl to translations below" pos="6;54"/>
+   <todo name="@TODO add shakl to translations below" pos="5;54"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nesbot\carbon\src\Carbon\Traits\Date.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;43"/>
+   <todo name="todoc>" pos="6;524"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nikic\php-parser\lib\PhpParser\Comment.php">
+   <todo name="TODO: Rename these to include &quot;start&quot;." pos="13;229"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nikic\php-parser\lib\PhpParser\Internal\TokenStream.php">
+   <todo name="TODO Handle non-space indentation" pos="21;244"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nikic\php-parser\lib\PhpParser\Lexer\TokenEmulator\AttributeEmulator.php">
+   <todo name="TODO" pos="9;41"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nikic\php-parser\lib\PhpParser\PrettyPrinterAbstract.php">
+   <todo name="TODO Add &lt;" pos="13;496"/>
+   <todo name="TODO: Try to preserve formatting" pos="17;727"/>
+   <todo name="TODO: Preserve formatting." pos="25;779"/>
+   <todo name="TODO: Preserve formatting." pos="25;883"/>
+   <todo name="TODO: Support removing single node." pos="13;906"/>
+   <todo name="TODO: FIXUP_NEW_VARIABLE" pos="52;1173"/>
+   <todo name="TODO: FIXUP_NEW_VARIABLE" pos="69;1184"/>
+   <todo name="TODO: &quot;yield&quot; where both key and value are inserted doesn't work" pos="9;1306"/>
+   <todo name="TODO" pos="86;1334"/>
+   <todo name="TODO These need to be treated more carefully" pos="47;1350"/>
+   <todo name="TODO Insertion into empty statement lists." pos="9;1442"/>
+   <todo name="TODO" pos="14;1490"/>
+   <todo name="TODO" pos="67;1511"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\nikic\php-parser\lib\PhpParser\PrettyPrinter\Standard.php">
+   <todo name="TODO: This is not fully accurate." pos="9;1078"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\phpunit\phpunit\src\Util\Annotation\DocBlock.php">
+   <todo name="TODO this catch is currently not valid, see https://github.com/phar-io/version/issues/16" pos="23;241"/>
+   <todo name="@TODO this catch is currently not valid, see https://github.com/phar-io/version/issues/16" pos="22;241"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\CodeCleaner\CalledClassPass.php">
+   <todo name="todo switch this to actually validate args when we get context-aware code cleaner passes." pos="14;55"/>
+   <todo name="@todo switch this to actually validate args when we get context-aware code cleaner passes." pos="13;55"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\CodeCleaner\PassableByReferencePass.php">
+   <todo name="todo support MethodCall and StaticCall as well." pos="10;41"/>
+   <todo name="@todo support MethodCall and StaticCall as well." pos="9;41"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\CodeCleaner\RequirePass.php">
+   <todo name="todo Shell::handleError would be better here, because we could" pos="14;82"/>
+   <todo name="@todo Shell::handleError would be better here, because we could" pos="13;82"/>
+   <todo name="todo trigger an error as fallback" pos="14;88"/>
+   <todo name="@todo trigger an error as fallback" pos="13;88"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\CodeCleaner\ValidFunctionNamePass.php">
+   <todo name="todo add an &quot;else&quot; here which adds a runtime check for instances where we can't tell" pos="14;49"/>
+   <todo name="@todo add an &quot;else&quot; here which adds a runtime check for instances where we can't tell" pos="13;49"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Command\DocCommand.php">
+   <todo name="todo this is going to collide with ReflectionMethod ids" pos="18;149"/>
+   <todo name="@todo this is going to collide with ReflectionMethod ids" pos="17;149"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Command\ListCommand.php">
+   <todo name="todo something cleaner than this :-/" pos="10;130"/>
+   <todo name="@todo something cleaner than this :-/" pos="9;130"/>
+   <todo name="todo ensure that 'functions', 'classes', 'interfaces', 'traits' only accept namespace target" pos="14;268"/>
+   <todo name="@todo ensure that 'functions', 'classes', 'interfaces', 'traits' only accept namespace target" pos="13;268"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Command\ListCommand\ClassConstantEnumerator.php">
+   <todo name="todo handle ReflectionExtension as well" pos="14;33"/>
+   <todo name="@todo handle ReflectionExtension as well" pos="13;33"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Configuration.php">
+   <todo name="todo support raw output with interactive input" pos="10;210"/>
+   <todo name="@todo support raw output with interactive input" pos="9;210"/>
+   <todo name="todo mebbe turn this on by default some day" pos="10;874"/>
+   <todo name="@todo mebbe turn this on by default some day" pos="9;874"/>
+   <todo name="todo detect `chsh` != 65001 on Windows and return false" pos="10;997"/>
+   <todo name="@todo detect `chsh` != 65001 on Windows and return false" pos="9;997"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Formatter\CodeFormatter.php">
+   <todo name="todo something better here" pos="10;71"/>
+   <todo name="@todo something better here" pos="9;71"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Formatter\SignatureFormatter.php">
+   <todo name="todo Do we want to include the" pos="14;344"/>
+   <todo name="@todo Do we want to include the" pos="13;344"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Readline\Hoa\File.php">
+   <todo name="TODO manage $callable as a filter" pos="10;191"/>
+   <todo name="@TODO manage $callable as a filter" pos="9;191"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\Shell.php">
+   <todo name="todo should it be possible to have raw output in an interactive run" pos="14;364"/>
+   <todo name="@todo should it be possible to have raw output in an interactive run" pos="13;364"/>
+   <todo name="todo overrides via environment variables (or should these happen in config" pos="10;452"/>
+   <todo name="@todo overrides via environment variables (or should these happen in config" pos="9;452"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\psy\psysh\src\functions.php">
+   <todo name="todo come up with a better way of doing this which doesn't involve injecting input :-P" pos="10;103"/>
+   <todo name="@todo come up with a better way of doing this which doesn't involve injecting input :-P" pos="9;103"/>
+   <todo name="todo Show Presenter / custom casters." pos="10;320"/>
+   <todo name="@todo Show Presenter / custom casters." pos="9;320"/>
+   <todo name="todo this triggers the &quot;exited unexpectedly&quot; logic in the" pos="18;457"/>
+   <todo name="@todo this triggers the &quot;exited unexpectedly&quot; logic in the" pos="17;457"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mime\Headers\ParameterizedHeader.php">
+   <todo name="TODO: Check caching here" pos="36;126"/>
+   <todo name="TODO: text, or something else" pos="13;186"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mime\SimpleMimeEntity.php">
+   <todo name="TODO: Try to refactor this logic" pos="9;299"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Signers\DKIMSigner.php">
+   <todo name="TODO fix return" pos="5;217"/>
+   <todo name="todo handle it but should never happen" pos="25;601"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php">
+   <todo name="TODO make tls arguments configurable" pos="10;92"/>
+   <todo name="@TODO make tls arguments configurable" pos="9;92"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\symfony\css-selector\XPath\Extension\FunctionExtension.php">
+   <todo name="todo: handle an+b, odd, even" pos="9;96"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\symfony\css-selector\XPath\Extension\HtmlExtension.php">
+   <todo name="todo: in the second half, add &quot;and is not a descendant of that fieldset element's first legend elem" pos="9;102"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\symfony\http-kernel\HttpCache\Store.php">
+   <todo name="TODO the metaStore referenced an entity that doesn't exist in" pos="9;157"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\symfony\mime\Header\ParameterizedHeader.php">
+   <todo name="TODO: text, or something else" pos="13;117"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\Educational-Platform\vendor\symfony\translation\Loader\PoFileLoader.php">
+   <todo name="TODO: this fails when comments or contexts are added" pos="17;89"/>
+  </todofile>
+ </todoblock>
+ <dbgurls/>
+ <lasttime value="1676021739"/>
+</project>

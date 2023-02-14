@@ -37,7 +37,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="{{--route('trainers.showTrainer',Auth::id())--}}">
+                        <a class="dropdown-item d-flex align-items-center" href="{{route('trainers.show',Auth::id())}}">
                             <i class="bi bi-person"></i>
                             <span>{{__('messages.My Profile')}}</span>
                         </a>

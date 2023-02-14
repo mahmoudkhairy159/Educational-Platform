@@ -15,14 +15,16 @@ class CreateUsersProfilesTable extends Migration
     {
         Schema::create('usersProfiles', function (Blueprint $table) {
             $table->id();
-            $table->string('nationalId')->unique();
-            $table->string('gender');
-            $table->string('governorate');
-            $table->string('city');
-            $table->string('educationType');
-            $table->string('educationYear');
-            $table->string('photo');
+            $table->string('nationalId')->unique()->nullable();
+            $table->string('gender')->nullable();
+            $table->string('governorate')->nullable();
+            $table->string('city')->nullable();
+            $table->string('educationType')->nullable();
+            $table->string('educationYear')->nullable();
+            $table->string('photo')->nullable();
             $table->integer('user_id');
+            $table->timestamps();
+
         });
     }
 

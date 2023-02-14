@@ -162,10 +162,7 @@
                                     <div class="row">
                                         <div class="col-6 "><h6>{{__('messages.Exam Total Mark')}}</h6></div>
                                         <div class="col-6">
-
-                                            <a href="{{asset('storage/images/lessons/'.$lesson->examTotalMark)}}"
-                                               class="rounded " download>Download <i
-                                                    class="fa-solid fa-download"></i></a>
+                                            <p>{{$lesson->examTotalMark}}</p>
                                         </div>
                                     </div>
                                     <hr class="dropdown-divider">

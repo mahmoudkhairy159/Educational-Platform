@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\trainer;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -20,12 +22,13 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user= User::find($id);
+        $user = User::find($id);
+        $userProfile=$user->userProfile;
         if(!$user){
             return redirect()->back()->with('error','User Does not Exist');
 
         }
-        return view('users.user-profile')->with('user',$user);
+        return view('student.profile')->with(['user'=>$user,'userProfile'=>$userProfile]);
     }
 
     public function showUserForAdmin($id)
@@ -68,9 +71,42 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+        $userProfile = $user->userProfile;
         if (!$user) {
-            return redirect()->back()->with('error', 'User Does not Exist');
+            return redirect()->back()->with('error', 'user Does not Exist');
         }
+        if($request->has('gender')){
+            $userProfile->update([
+                'gender'=>$request->gender,
+            ]);
+        }
+        if($request->has('governorate')){
+            $userProfile->update([
+                'governorate'=>$request->governorate,
+            ]);
+        }
+        if($request->has('city')){
+            $userProfile->update([
+                'city'=>$request->city,
+            ]);
+        }
+        if($request->has('nationalId')){
+            $userProfile->update([
+                'nationalId'=>$request->nationalId,
+            ]);
+        }
+
+        if($request->hasFile('photo')){
+            if($userProfile){
+                Storage::disk('users')->delete($userProfile->photo);
+                sleep(1);
+                Storage::disk('users')->deleteDirectory($user->name.'_'.$user->id);
+            }
+            $userProfile->update([
+                'photo'=>$request->photo->store($user->name.'_'.$user->id,'users'),
+            ]);
+        }
+
         $user->update([
             'name' => $request->name,
             'address' => $request->address,
