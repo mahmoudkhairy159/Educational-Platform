@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\User;
+use App\trainer;
+use App\Course;
+define('paginationCount', 3);
+
 
 class HomeController extends Controller
 {
@@ -22,7 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        return view('student/home');
+        $studentsCount=User::count();
+        $coursesCount=Course::count();
+        $trainersCount=Trainer::count();
+        $courses = Course::select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name', 'description_' . LaravelLocalization::getCurrentLocale() . ' as description', 'photo', 'trainer_id')->paginate(paginationCount);
+        $trainers=Trainer::select('id','name')->paginate(paginationCount);
+        return view('student/home')->with(['studentsCount'=>$studentsCount,'coursesCount'=>$coursesCount,'trainersCount'=> $trainersCount,'courses'=>$courses,'trainers'=>$trainers]);
     }
 }

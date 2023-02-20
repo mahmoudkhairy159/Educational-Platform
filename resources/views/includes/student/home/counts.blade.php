@@ -5,12 +5,12 @@
         <div class="row counters">
 
             <div class="col-lg-3 col-6 text-center">
-                <span  id="value">100</span>
+                <span  id="value">{{  $studentsCount }}</span>
                 <p>Students</p>
             </div>
 
             <div class="col-lg-3 col-6 text-center">
-                <span  id="value">100</span>
+                <span  id="value">{{ $coursesCount }}</span>
                 <p>Courses</p>
             </div>
 
@@ -20,7 +20,7 @@
             </div>
 
             <div class="col-lg-3 col-6 text-center">
-                <span  id="value">100</span>
+                <span  id="value">{{ $trainersCount }}</span>
                 <p>Trainers</p>
             </div>
 

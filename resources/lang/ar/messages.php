@@ -19,9 +19,11 @@ return [
     'Home'=>'الصفحة الرئيسية',
     'About'=>'من نحن',
     'Courses'=>'الدورات',
+    'My Courses'=>'كورساتي',
     'Trainers'=>'المعلمين',
     'Events'=>'الأحداث',
     'Pricing'=>'الأسعار',
+    'Contact'=>'تواصل معنا',
     'Logout'=>'تسجيل الخروج',
 
     //Courses page
@@ -118,6 +120,8 @@ return [
     'edit'=>'عدل',
     'Placement Date'=>'تاريخ الطلب',
     'Delivery Date'=>'موعد التسليم',
+    'Ask To Enroll'=>'طلب الالتحاق',
+
 
 
 

@@ -42,7 +42,7 @@
                         <p>5.00 pm - 7.00 pm</p>
                     </div>
                     <div class="d-grid gap-2">
-                      <a class="btn btn-success " href="{{route('courses.enrollCourse',$course->id)}}">{{__('messages.Enroll Course')}}</a>
+                      <a class="btn btn-success " href="{{route('courses.askToEnrollCourse',$course->id)}}">{{__('messages.Ask To Enroll')}}</a>
                     </div>
 
                 </div>

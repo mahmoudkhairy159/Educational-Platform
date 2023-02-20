@@ -25,6 +25,6 @@ Route::group([
     Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
     Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
     Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
-        Route::view('/dashboard', 'adminDashboard.dashboard');
+    Route::view('/dashboard', 'adminDashboard.dashboard');
     });
 });

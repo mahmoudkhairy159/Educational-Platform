@@ -17,6 +17,7 @@ class CreateCourseUserTable extends Migration
             $table->id();
             $table->integer('course_id');
             $table->integer('user_id');
+            $table->integer('status')->nullable();
         });
     }
 

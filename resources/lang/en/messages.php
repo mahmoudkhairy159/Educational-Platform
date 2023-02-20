@@ -20,6 +20,7 @@ return [
     'Home'=>'Home',
     'About'=>'About',
     'Courses'=>'Courses',
+    'My Courses'=>'My Courses',
     'Trainers'=>'Trainers',
     'Events'=>'Events',
     'Pricing'=>'Pricing',
@@ -62,6 +63,7 @@ return [
     'Tables'=>'Tables',
     'Customers'=>'Customers',
     'Profile'=>'profile',
+    'Contact'=>'Contact',
     //create Course
     'New Course'=>'New Course',
     'Add New Course'=>'Add New Course',
@@ -119,6 +121,7 @@ return [
     'edit'=>'edit',
     'Placement Date'=>'Placement Date',
     'Delivery Date'=>'Delivery Date',
+    'Ask To Enroll'=>'Ask To Enroll',
 
 
 

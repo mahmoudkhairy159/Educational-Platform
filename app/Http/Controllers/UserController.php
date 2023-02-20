@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use App\trainer;
 use App\User;
+use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+define('paginationCount',5);
 
 class UserController extends Controller
+
 {
 
+    //show all students in all courses of the trainer
     public function index()
     {
-        $users=User::select('id', 'name','email','address','phone')->paginate(paginationCount);
-        return view('adminDashboard.allUsersTable')->with('users', $users);
+        $trainer=Auth::user();
+        $courses=$trainer->courses;     
+        return view('trainer.student.showStudents')->with('courses', $courses);
     }
 
+    //show Student profile
     public function show($id)
     {
         $user = User::find($id);
@@ -31,41 +36,24 @@ class UserController extends Controller
         return view('student.profile')->with(['user'=>$user,'userProfile'=>$userProfile]);
     }
 
-    public function showUserForAdmin($id)
+    public function showUserForTrainer($courseId,$userId)
     {
-        $user= User::select('id', 'name','email','address','phone')->where('id',$id)->first();
+        $user = User::find($userId);
+        $course = User::find($courseId);
         if(!$user){
             return redirect()->back()->with('error','User Does not Exist');
         }
-        //showUserOrdersForAdmin
-        $orders = $user->orders()->where('status','<>','0')->get();
-        $productsQuantities =array();
-        foreach ($orders as $order) {
-            $products = $order->products;
-            foreach ($products as $product) {
-                $productQuantity = DB::table('order_product')->where('order_id', $order->id)->where('product_id', $product->id)->value('quantity');
-                array_push (  $productsQuantities , $productsQuantities[$order->id.$product->id]= $productQuantity );
-            }
-        }
-
-        //showUsercartlistForAdmin
-        $pendingOrder=$user->orders()->where('status' ,'0')->first();
-        if($pendingOrder){
-            $pendingProducts=$pendingOrder->products;
-            $pendingProductsQuantities=[];
-            $totalPrice = 0;
-            foreach($pendingProducts as $pendingProduct){
-                $productQuantity = DB::table('order_product')->where('order_id', $pendingOrder->id)->where('product_id', $pendingProduct->id)->value('quantity');
-                array_push (  $pendingProductsQuantities , $pendingProductsQuantities[$pendingOrder->id]= $productQuantity );
-            }
-            return view('users.showUserForAdmin')->with('user',$user)->with('orders',$orders)->with('productsQuantities',$productsQuantities)->with('pendingOrder',$pendingOrder)->with('pendingProductsQuantities',$pendingProductsQuantities );;
-        }
-        return view('users.showUserForAdmin')->with('user',$user)->with('orders',$orders)->with('productsQuantities',$productsQuantities);;
-
-
-
-
+        $userProfile=$user->userProfile;   
+        return view('trainer.student.showStudent')->with(['user'=>$user,'userProfile'=>$userProfile,'course'=>$course]);
+     
     }
+
+     
+
+
+
+
+    
 
 
     public function update(Request $request, $id)
@@ -140,25 +128,13 @@ class UserController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+   //remove user from course
+    public function destroy($courseId,$userId)
     {
-        $user=User::find($id);
-        $orders=$user->orders;
-        foreach($orders as $order){
-            foreach ($order->products  as $product){
-                $product->orders()->detach($order->id);
-            }
-            $order->delete();
-        }
-        $user->delete();
-        return redirect()->route('users.index');
-
+        $course=Course::find($courseId);
+        $course->users()->detach($userId);    
+        session()->flash('success', 'Student Is Removed From Course Successfully');   
+        return redirect()->route('courses.showCourseStudents',$courseId);
 
     }
 }

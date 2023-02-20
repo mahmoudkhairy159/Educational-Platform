@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{--route('users.index')--}}">
+                    <a href="{{  route('users.index')}}">
                         <i class="bi bi-circle"></i><span>{{__('messages.Students')}}</span>
                     </a>
                 </li>

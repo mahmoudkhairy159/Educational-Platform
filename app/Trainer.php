@@ -61,4 +61,5 @@ class trainer extends Authenticatable
             'id' // Local key on users table...
         );
     }
+   
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
- 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,6 +28,7 @@ Route::group([
 
     Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home')->middleware('auth:web');
+    Route::view('/about', 'student.about')->name('about')->middleware('auth:web');
 
     Route::middleware(['auth:web'])->prefix('user')->group(function () {
         Route::resource('courses', 'CourseController')->only([
@@ -46,7 +48,7 @@ Route::group([
         Route::get('/trainers/{trainerId}', 'TrainerController@showTrainerProfileToUser')->name('trainers.showTrainerProfileToUser');
         Route::get('/myCourses', 'CourseController@indexStudentCourses')->name('courses.indexStudentCourses');
 
-        Route::get('/course/{courseId}', 'CourseController@enrollCourse')->name('courses.enrollCourse');
+        Route::get('/course/{courseId}', 'CourseController@askToEnrollCourse')->name('courses.askToEnrollCourse');
 
     });
 });

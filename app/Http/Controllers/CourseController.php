@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Events\AskToEnrollCourse;
 use App\Course;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use PhpParser\Node\Stmt\Foreach_;
 
 define('paginationCount', 5);
 
@@ -134,16 +137,64 @@ class CourseController extends Controller
         return redirect()->route('courses.indexTrainer');
 
     }
+    public function askToEnrollCourse($courseId)
+    {
+        $user=Auth::user();
+        event(new AskToEnrollCourse($user,$courseId));
+        return redirect()->route('courses.show',$courseId)->with('success', 'Request of course enrollment sent  successfully');
+    }
 
-
-    public function enrollCourse($courseId)
+  /*  public function enrollCourse($courseId)
     {
         $user=Auth::user();
         $user->courses()->syncWithoutDetaching($courseId);
         return redirect()->route('courses.show',$courseId)->with('success', 'course enrolled successfully');
+    }*/
+
+    public function showCourseStudents($courseId)
+    {
+        $course=Course::find($courseId);
+        $users=$course->users()->with(['UserProfile'=>function($q){
+            $q->select('nationalId','photo','user_id');
+        }])->select( 'name','email','address','phone')->paginate(paginationCount);
+        return view('trainer.course.showCourseStudents')->with(['users'=>$users,'course'=>$course]);
+    }
+
+    public function showCourseEnrollmentRequests($courseId)
+    {
+        $usersIds=DB::select('SELECT user_id FROM course_user WHERE status  IS NULL AND course_id= '.$courseId );
+        if(!$usersIds){
+            session()->flash('error','There Is Not New Requests');
+            return redirect()->route('courses.showTrainer',$courseId);
+
+
+        }
+        $arr=array();
+       foreach($usersIds as $value){
+        array_push($arr,$value->user_id);
+
+       }
+        $course=Course::find($courseId);
+        $users=User::with('userProfile')->whereIn('id',$arr)->get();
+        return view('trainer.course.showCourseEnrollmentRequests')->with(['course'=>$course,'users'=>$users]);
+    }
+
+    public function acceptCourseEnrollmentRequests($courseId,$userId)
+    {
+        DB::update('UPDATE course_user SET status ="1" WHERE user_id='.$userId.' AND course_id= '.$courseId );
+        return redirect()->route('courses.showCourseEnrollmentRequests',$courseId);
+
 
 
     }
+    public function refuseCourseEnrollmentRequests($courseId,$userId)
+    {
+        DB::update('UPDATE course_user SET status ="0" WHERE user_id='.$userId.' AND course_id= '.$courseId );
+        return redirect()->route('courses.showCourseEnrollmentRequests',$courseId);
+
+    }
+
+
 
 
 }

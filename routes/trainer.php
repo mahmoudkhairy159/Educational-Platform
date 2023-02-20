@@ -41,5 +41,13 @@ Route::group([
         ]);
 
         Route::put('/changePassword/{id}', 'TrainerController@changePassword')->name('trainers.changePassword');
+        Route::get('/users', 'UserController@index')->name('users.index');
+        Route::get('/courses/{courseId}/users', 'CourseController@showCourseStudents')->name('courses.showCourseStudents');
+        Route::get('/courses/{courseId}/users/{userId}/', 'UserController@showUserForTrainer')->name('users.showUserForTrainer');
+        Route::delete('/courses/{courseId}/users/{userId}/', 'UserController@destroy')->name('users.removeUserFromCourse');
+        Route::get('/courses/{courseId}/EnrollmentRequests/', 'CourseController@showCourseEnrollmentRequests')->name('courses.showCourseEnrollmentRequests');
+        Route::get('/courses/{courseId}/acceptEnrollmentRequest/{userId}/', 'CourseController@acceptCourseEnrollmentRequests')->name('courses.acceptEnrollmentRequest');
+        Route::get('/courses/{courseId}/refuseEnrollmentRequest/{userId}', 'CourseController@refuseCourseEnrollmentRequests')->name('courses.refuseEnrollmentRequest');
+
     });
 });
