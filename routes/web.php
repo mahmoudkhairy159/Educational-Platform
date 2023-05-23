@@ -16,6 +16,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
+define('paginationCount', 5);
+
+
 
 
 Route::get('/', function () {
@@ -37,11 +40,11 @@ Route::group([
         Route::resource('lessons', 'LessonController')->only([
             'index', 'show'
         ]);
-        Route::resource('trainers','TrainerController')->only([
+        Route::resource('trainers', 'TrainerController')->only([
             'index',
         ]);
-        Route::resource('users','UserController')->only([
-            'show','update',
+        Route::resource('users', 'UserController')->only([
+            'show', 'update',
         ]);
         Route::put('/changePassword/{id}', 'UserController@changePassword')->name('users.changePassword');
 
@@ -49,6 +52,5 @@ Route::group([
         Route::get('/myCourses', 'CourseController@indexStudentCourses')->name('courses.indexStudentCourses');
 
         Route::get('/course/{courseId}', 'CourseController@askToEnrollCourse')->name('courses.askToEnrollCourse');
-
     });
 });

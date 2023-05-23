@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\AskToEnrollCourse;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\DB;
 
 class sendEnrollmentRequestToTrainer
 {
@@ -26,6 +27,7 @@ class sendEnrollmentRequestToTrainer
      */
     public function handle(AskToEnrollCourse $event)
     {
-        $event->user->courses()->syncWithoutDetaching($event->courseId);
+        $event->user->courses()->sync($event->courseId);
+        DB::update('UPDATE course_user SET status =NULL WHERE user_id=' . $event->userId . ' AND course_id= ' . $event->courseId);
     }
 }

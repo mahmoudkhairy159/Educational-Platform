@@ -1,40 +1,43 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Events\AskToEnrollCourse;
 use App\Course;
+use App\Http\Controllers\Controller;
+use App\Traits\GeneralTrait;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use PhpParser\Node\Stmt\Foreach_;
 
 
 class CourseController extends Controller
 {
+    use GeneralTrait;
+
     // return courses view for student (user)
     public function index()
     {
-        $courses = Course::select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name', 'description_' . LaravelLocalization::getCurrentLocale() . ' as description', 'photo', 'trainer_id')->paginate(paginationCount);
-        return view('student.course.showCourses')->with('courses', $courses);
+        $courses = Course::with('trainer')->select('id', 'name_' . app()->getLocale() . ' as name', 'description_' . app()->getLocale() . ' as description', 'photo', 'trainer_id')->paginate(paginationCount);
+        return $this->returnData('courses', $courses);
     }
 
     // return Courses's student view for student (user)
     public function indexStudentCourses()
     {
         $user = Auth::user();
-        $courses = $user->courses()->select('name_' . LaravelLocalization::getCurrentLocale() . ' as name', 'description_' . LaravelLocalization::getCurrentLocale() . ' as description', 'photo', 'trainer_id')->paginate(paginationCount);
-        return view('student.course.showMyCourses')->with('courses', $courses);
+        $courses = $user->courses()->select('name_' .  app()->getLocale() . ' as name', 'description_' . app()->getLocale() . ' as description', 'photo', 'trainer_id')->paginate(paginationCount);
+
+        return $this->returnData('courses', $courses);
     }
 
     // return courses view for Trainer
     public function indexTrainer()
     {
-        $courses = Course::select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name', 'description_' . LaravelLocalization::getCurrentLocale() . ' as description', 'photo')->paginate(paginationCount);
-        return view('trainer.course.showCourses')->with('courses', $courses);
+        $courses = Course::select('id', 'name_' . app()->getLocale() . ' as name', 'description_' . app()->getLocale() . ' as description', 'photo')->paginate(paginationCount);
+        return $this->returnData('courses', $courses);
     }
 
 
@@ -54,17 +57,25 @@ class CourseController extends Controller
             'photo' => $request->photo->store($request->name_en, 'courses'),
             'trainer_id' => $request->trainer_id,
         ]);
-        return redirect()->route('courses.indexTrainer')->with('success', 'Product created successfully!');
+        return $this->returnSuccessMessage('Product created successfully!');
     }
 
     // return course view for student (user)
     public function show($id)
     {
-        $course = Course::where('id', $id)->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name', 'description_' . LaravelLocalization::getCurrentLocale() . ' as description', 'photo', 'trainer_id')->first();
+        $course = Course::with('trainer')->with('lessons')->where('id', $id)->select('id', 'name_' . app()->getLocale() . ' as name', 'description_' . app()->getLocale() . ' as description', 'photo', 'trainer_id')->first();
         if (!$course) {
-            return redirect()->back()->with('error', 'The Course Does not Exist');
+            return $this->returnError('404', 'The Course Does not Exist');
         }
-        return view('student.course.showCourse')->with('course', $course);
+        $userId = Auth::id();
+        $status = DB::table('course_user')->where('user_id', $userId)->where('course_id', $course->id)->exists();
+        if (!$status) {
+            $status = '0';
+        } else {
+            $status = DB::table('course_user')->where('user_id', $userId)->where('course_id', $course->id)->value('status');
+        }
+        $course->status = $status;
+        return $this->returnData('course', $course);
     }
 
     // return course view for Trainer
@@ -73,9 +84,9 @@ class CourseController extends Controller
 
         $course = Course::where('id', $id)->select('id', 'name_ar', 'name_en', 'description_ar', 'description_en', 'photo')->first();
         if (!$course) {
-            return redirect()->back()->with('error', 'The Course Does not Exist');
+            return $this->returnError('404', 'The Course Does not Exist');
         }
-        return view('trainer.course.showCourse')->with('course', $course);
+        return $this->returnData('course', $course);
     }
 
 
@@ -83,9 +94,9 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         if (!$course) {
-            return redirect()->back()->with('error', 'The Course Does not Exist');
+            return $this->returnError('404', 'The Course Does not Exist');
         }
-        return view('trainer.course.editCourse')->with('course', $course);
+        return $this->returnData('course', $course);
     }
 
 
@@ -93,7 +104,7 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         if (!$course) {
-            return redirect()->back()->with('error', 'The Course Does not Exist');
+            return $this->returnError('404', 'The Course Does not Exist');
         }
 
 
@@ -116,8 +127,7 @@ class CourseController extends Controller
             'trainer_id' => $request->trainer_id,
         ]);
 
-        session()->flash('success', 'course updated successfully!');
-        return redirect()->route('courses.indexTrainer');
+        return $this->returnSuccessMessage('course updated successfully!');
     }
 
 
@@ -125,28 +135,23 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         if (!$course) {
-            return redirect()->back()->with('error', 'The Course Does not Exist');
+            return $this->returnError('404', 'The Course Does not Exist');
         }
 
         Storage::disk('courses')->delete($course->photo);
         Storage::disk('courses')->deleteDirectory($course->name_en);
         $course->delete();
-        session()->flash('success', 'course deleted successfully!');
-        return redirect()->route('courses.indexTrainer');
+        return $this->returnSuccessMessage('course deleted successfully!');
     }
-    public function askToEnrollCourse($courseId)
+    public function askToEnrollCourse(Request $request)
     {
+        $course_id = $request->course_id;
         $user = Auth::user();
-        event(new AskToEnrollCourse($user, $courseId));
-        return redirect()->route('courses.show', $courseId)->with('success', 'Request of course enrollment sent  successfully');
+        event(new AskToEnrollCourse($user, $course_id));
+        return $this->returnSuccessMessage('Request of course enrollment sent  successfully');
     }
 
-    /*  public function enrollCourse($courseId)
-    {
-        $user=Auth::user();
-        $user->courses()->syncWithoutDetaching($courseId);
-        return redirect()->route('courses.show',$courseId)->with('success', 'course enrolled successfully');
-    }*/
+
 
     public function showCourseStudents($courseId)
     {
@@ -154,7 +159,8 @@ class CourseController extends Controller
         $users = $course->users()->with(['UserProfile' => function ($q) {
             $q->select('nationalId', 'photo', 'user_id');
         }])->select('name', 'email', 'address', 'phone')->paginate(paginationCount);
-        return view('trainer.course.showCourseStudents')->with(['users' => $users, 'course' => $course]);
+        $course->users = $users;
+        return $this->returnData('course', $course);
     }
 
     public function showCourseEnrollmentRequests($courseId)
@@ -162,7 +168,7 @@ class CourseController extends Controller
         $usersIds = DB::select('SELECT user_id FROM course_user WHERE status  IS NULL AND course_id= ' . $courseId);
         if (!$usersIds) {
             session()->flash('error', 'There Is Not New Requests');
-            return redirect()->route('courses.showTrainer', $courseId);
+            return $this->returnError('404', 'There Is Not New Requests');
         }
         $arr = array();
         foreach ($usersIds as $value) {
@@ -170,17 +176,20 @@ class CourseController extends Controller
         }
         $course = Course::find($courseId);
         $users = User::with('userProfile')->whereIn('id', $arr)->get();
-        return view('trainer.course.showCourseEnrollmentRequests')->with(['course' => $course, 'users' => $users]);
+
+        $course->users = $users;
+        return $this->returnData('course', $course);
     }
 
     public function acceptCourseEnrollmentRequests($courseId, $userId)
     {
         DB::update('UPDATE course_user SET status ="1" WHERE user_id=' . $userId . ' AND course_id= ' . $courseId);
         return redirect()->route('courses.showCourseEnrollmentRequests', $courseId);
+        return $this->returnSuccessMessage('Request is accepted');
     }
     public function refuseCourseEnrollmentRequests($courseId, $userId)
     {
         DB::update('UPDATE course_user SET status ="0" WHERE user_id=' . $userId . ' AND course_id= ' . $courseId);
-        return redirect()->route('courses.showCourseEnrollmentRequests', $courseId);
+        return $this->returnSuccessMessage('Request is refused');
     }
 }

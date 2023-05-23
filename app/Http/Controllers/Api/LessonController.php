@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
+use App\Traits\GeneralTrait;
 use App\Course;
 use App\Lesson;
 use Illuminate\Http\Request;
@@ -11,18 +13,19 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class LessonController extends Controller
 {
+    use GeneralTrait;
     // return lessons view for student (user)
     public function index()
     {
-        $lessons = Lesson::select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name', 'material', 'course_id')->paginate(paginationCount);
-        return view('student.lessons')->with('lessons', $lessons);
+        $lessons = Lesson::select('id', 'name_' . app()->getLocale() . ' as name', 'material', 'course_id')->paginate(paginationCount);
+        return $this->returnData('lessons', $lessons);
     }
 
     // return lessons view for Trainer
     public function indexTrainer()
     {
-        $lessons = lesson::select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name', 'material', 'course_id')->paginate(paginationCount);
-        return view('trainer.lessons')->with('lessons', $lessons);
+        $lessons = lesson::select('id', 'name_' . app()->getLocale() . ' as name', 'material', 'course_id')->paginate(paginationCount);
+        return $this->returnData('lessons', $lessons);
     }
 
 
@@ -71,7 +74,7 @@ class LessonController extends Controller
             }
         }
 
-        return redirect()->route('courses.showTrainer', $lesson->course_id)->with('success', 'Lesson created successfully!');
+        return $this->returnSuccessMessage('Lesson created successfully!');
     }
 
     // return lesson view for student (user)
@@ -79,9 +82,9 @@ class LessonController extends Controller
     {
         $lesson = Lesson::find($id);
         if (!$lesson) {
-            return redirect()->back()->with('error', 'The lesson Does not Exist');
+            return $this->returnError('404', 'The lesson Does not Exist');
         }
-        return view('student.lesson')->with('lesson', $lesson);
+        return $this->returnData('lesson', $lesson);
     }
 
     // return lesson view for Trainer
@@ -91,9 +94,13 @@ class LessonController extends Controller
         $lesson = Lesson::where('id', $id)->first();
         $course = $lesson->course;
         if (!$lesson) {
-            return redirect()->back()->with('error', 'The Lesson Does not Exist');
+            return $this->returnError('404', 'The lesson Does not Exist');
         }
-        return view('trainer.lesson.showLesson')->with(['lesson' => $lesson, 'course' => $course]);
+        $data = [
+            'lesson' => $lesson,
+            'course' => $course
+        ];
+        return $this->returnData('data', $data);
     }
 
 
@@ -101,9 +108,9 @@ class LessonController extends Controller
     {
         $lesson = lesson::find($id);
         if (!$lesson) {
-            return redirect()->back()->with('error', 'The lesson Does not Exist');
+            return $this->returnError('404', 'The lesson Does not Exist');
         }
-        return view('trainer.lesson.editLesson')->with('lesson', $lesson);
+        return $this->returnData('lesson', $lesson);
     }
 
 
@@ -111,7 +118,7 @@ class LessonController extends Controller
     {
         $lesson = lesson::find($id);
         if (!$lesson) {
-            return redirect()->back()->with('error', 'The lesson Does not Exist');
+            return $this->returnError('404', 'The lesson Does not Exist');
         }
         $courseName = $lesson->course->name_en;
         $courseId = $lesson->course->id;
@@ -170,8 +177,7 @@ class LessonController extends Controller
             'course_id' => $request->course_id,
         ]);
 
-        session()->flash('success', 'lesson updated successfully!');
-        return redirect()->route('courses.showTrainer', $courseId);
+        return $this->returnSuccessMessage('lesson updated successfully!');
     }
 
 
@@ -179,7 +185,7 @@ class LessonController extends Controller
     {
         $lesson = lesson::find($id);
         if (!$lesson) {
-            return redirect()->back()->with('error', 'The lesson Does not Exist');
+            return $this->returnError('404', 'The lesson Does not Exist');
         }
         $courseName = $lesson->course->name_en;
         $courseId = $lesson->course->id;
@@ -190,7 +196,6 @@ class LessonController extends Controller
         Storage::disk('lessons')->deleteDirectory($courseName . '_' . $lesson->name_en);
 
         $lesson->delete();
-        session()->flash('error', 'lesson deleted successfully!');
-        return redirect()->route('courses.showTrainer', $courseId);
+        return $this->returnSuccessMessage('lesson deleted successfully!');
     }
 }

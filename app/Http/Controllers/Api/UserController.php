@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Traits\GeneralTrait;
 use App\trainer;
 use App\User;
 use App\Course;
@@ -10,39 +11,45 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class UserController extends Controller
 
 {
+    use GeneralTrait;
 
     //show all students in all courses of the trainer
     public function index()
     {
         $trainer = Auth::user();
         $courses = $trainer->courses;
-        return view('trainer.student.showStudents')->with('courses', $courses);
+        return $this->returnData('courses', $courses);
     }
 
     //show Student profile
     public function show($id)
     {
-        $user = User::find($id);
-        $userProfile = $user->userProfile;
-        if (!$user) {
-            return redirect()->back()->with('error', 'User Does not Exist');
+        $student = User::with('userProfile')->find($id);
+        if (!$student) {
+            return $this->returnError('404', 'User Does not Exist');
         }
-        return view('student.profile')->with(['user' => $user, 'userProfile' => $userProfile]);
+        return $this->returnData('student', $student);
     }
 
     public function showUserForTrainer($courseId, $userId)
     {
-        $user = User::find($userId);
+        $student = User::with('userProfile')->find($userId);
         $course = User::find($courseId);
-        if (!$user) {
-            return redirect()->back()->with('error', 'User Does not Exist');
+        if (!$student) {
+            return $this->returnError('404', 'User Does not Exist');
         }
-        $userProfile = $user->userProfile;
-        return view('trainer.student.showStudent')->with(['user' => $user, 'userProfile' => $userProfile, 'course' => $course]);
+        $data = [
+            'student' => $student,
+            'course' => $course
+        ];
+        return $this->returnData('data', $data);
     }
 
 
@@ -58,7 +65,7 @@ class UserController extends Controller
         $user = User::find($id);
         $userProfile = $user->userProfile;
         if (!$user) {
-            return redirect()->back()->with('error', 'user Does not Exist');
+            return $this->returnError('404', 'User Does not Exist');
         }
         if ($request->has('gender')) {
             $userProfile->update([
@@ -91,13 +98,13 @@ class UserController extends Controller
                 'photo' => $request->photo->store($user->name . '_' . $user->id, 'users'),
             ]);
         }
-
         $user->update([
             'name' => $request->name,
             'address' => $request->address,
             'phone' => $request->phone,
         ]);
-        return redirect()->route('users.show', $id)->with('success', 'Profile is updated successfully');
+
+        return $this->returnSuccessMessage('Profile is updated successfully');
     }
 
 
@@ -107,20 +114,23 @@ class UserController extends Controller
         $user = User::find($id);
 
         if (!Hash::check($request->currentPassword, $user->password)) {
-            return redirect()->back()->with('error', 'current password is wrong');
+            return $this->returnError('404', 'current password is wrong');
         }
         if ($request->newPassword !== $request->renewPassword) {
-            return redirect()->back()->with('error', 'Re-enter New Password Correctly');
+
+            return $this->returnError('404', 'Re-enter New Password Correctly');
         }
         $user->update([
             'password' => Hash::make($request->newPassword),
         ]);
 
         //logout after update password
-        Auth::logout();
+        /*Auth::logout();
         $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
+        $request->session()->regenerateToken();*/
+        $token = $request->header('auth-token');
+        JWTAuth::setToken($token)->invalidate(); //logout
+        return $this->returnSuccessMessage('Profile is changed successfully');
     }
 
 
@@ -129,7 +139,6 @@ class UserController extends Controller
     {
         $course = Course::find($courseId);
         $course->users()->detach($userId);
-        session()->flash('success', 'Student Is Removed From Course Successfully');
-        return redirect()->route('courses.showCourseStudents', $courseId);
+        return $this->returnSuccessMessage('Student Is Removed From Course Successfully');
     }
 }

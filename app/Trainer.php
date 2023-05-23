@@ -4,13 +4,23 @@ namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use App\TrainerProfile;
 use App\Course;
 
-class trainer extends Authenticatable
+class trainer extends Authenticatable implements JWTSubject
 {
     use Notifiable;
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -61,5 +71,5 @@ class trainer extends Authenticatable
             'id' // Local key on users table...
         );
     }
-   
+
 }

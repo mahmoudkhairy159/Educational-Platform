@@ -15,14 +15,14 @@ class AskToEnrollCourse
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $user;
+    public $userId;
     public $courseId;
 
-    
-    public function __construct($user,$courseId)
-    {
-        $this->user=$user;
-        $this->courseId=$courseId;
-    }
 
-    
+    public function __construct($user, $courseId)
+    {
+        $this->user = $user;
+        $this->userId = $user->id;
+        $this->courseId = $courseId;
+    }
 }
